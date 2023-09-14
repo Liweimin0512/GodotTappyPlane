@@ -27,9 +27,21 @@ visible = false
 [node name="MenuForm" parent="UILayer" instance=ExtResource("4_n3seh")]
 unique_name_in_owner = true
 
-[node name="w_settings" parent="UILayer" instance=ExtResource("6_vs6ic")]
+[node name="w_settings_popup" parent="UILayer" instance=ExtResource("6_vs6ic")]
 unique_name_in_owner = true
 visible = false
+
+[node name="w_name_input_popup" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="w_leaderboard_popup" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
