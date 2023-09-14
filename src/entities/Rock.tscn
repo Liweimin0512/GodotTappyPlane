@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkh8pkuwg8xgf"]
+
+[ext_resource type="Script" path="res://src/entities/Rock.gd" id="1_1nnbm"]
+[ext_resource type="Texture2D" uid="uid://djkiupc05u0i" path="res://assets/testures/entities/rocks/rock.png" id="2_08n7t"]
+
+[node name="Rock" type="Node2D" groups=["rock"]]
+script = ExtResource("1_1nnbm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("2_08n7t")
+
+[node name="HurtArea" type="Area2D" parent="Sprite2D"]
+collision_mask = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/HurtArea"]
+position = Vector2(1.29783, 0)
+polygon = PackedVector2Array(-17.8423, 3.28707, -25.4189, 11.4249, -55.1642, 119.743, 52.3116, 118.62, 45.5768, 58.0071, 38.0002, 53.5173, 30.4235, -16.9172, 25.3725, -17.4785, 13.5866, -119.342, 7.69371, -118.781)
+
+[connection signal="area_entered" from="Sprite2D/HurtArea" to="." method="_on_hurt_area_area_entered"]

@@ -1,0 +1,102 @@
+[gd_scene load_steps=8 format=3 uid="uid://dba787dytf38p"]
+
+[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/testures/widgets/UIbg.png" id="1_dwkg6"]
+[ext_resource type="Script" path="res://src/widgets/w_game_over.gd" id="1_sma0s"]
+[ext_resource type="Texture2D" uid="uid://d4j0h4k5bw6va" path="res://assets/testures/widgets/textGameOver.png" id="2_yaum3"]
+[ext_resource type="Texture2D" uid="uid://b8157v112lygc" path="res://assets/testures/widgets/buttonLarge.png" id="3_lewmi"]
+[ext_resource type="AudioStream" uid="uid://ojqsx4622dsq" path="res://assets/audio/sound/click1.ogg" id="5_1k84r"]
+
+[sub_resource type="SystemFont" id="SystemFont_1qbj0"]
+font_names = PackedStringArray("SimSun")
+
+[sub_resource type="LabelSettings" id="LabelSettings_d4pwq"]
+font = SubResource("SystemFont_1qbj0")
+font_size = 27
+font_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="w_game_over" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_sma0s")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_dwkg6")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+texture = ExtResource("2_yaum3")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="btn_quit" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_lewmi")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer"]
+layout_mode = 2
+text = "Quit"
+label_settings = SubResource("LabelSettings_d4pwq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="btn_retry" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("3_lewmi")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+text = "Retry
+"
+label_settings = SubResource("LabelSettings_d4pwq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_1k84r")
+volume_db = 24.0
+bus = &"SFX"

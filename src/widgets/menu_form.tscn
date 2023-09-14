@@ -1,0 +1,209 @@
+[gd_scene load_steps=16 format=3 uid="uid://bc0dgahs0sgn6"]
+
+[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/testures/widgets/UIbg.png" id="1_gp0gm"]
+[ext_resource type="Script" path="res://src/widgets/menu_form.gd" id="1_qmaok"]
+[ext_resource type="Texture2D" uid="uid://bq8acldburxay" path="res://assets/testures/widgets/letters/letterT.png" id="2_osvpx"]
+[ext_resource type="Texture2D" uid="uid://duxt4hwxkb58" path="res://assets/testures/widgets/letters/letterA.png" id="3_pnyyx"]
+[ext_resource type="Texture2D" uid="uid://deqmv14ruqqby" path="res://assets/testures/widgets/letters/letterP.png" id="4_7gbk5"]
+[ext_resource type="Texture2D" uid="uid://yo35qsrdlu7v" path="res://assets/testures/widgets/letters/letterY.png" id="5_hbgtp"]
+[ext_resource type="Texture2D" uid="uid://btwl1xoqnuixv" path="res://assets/testures/widgets/letters/letterL.png" id="6_wil7h"]
+[ext_resource type="Texture2D" uid="uid://ntkwuab7qwvb" path="res://assets/testures/widgets/letters/letterN.png" id="7_xdao3"]
+[ext_resource type="Texture2D" uid="uid://csf5xxgu6t0fv" path="res://assets/testures/widgets/letters/letterE.png" id="8_wj3hn"]
+[ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/testures/widgets/yellow_button00.png" id="10_d7pqg"]
+[ext_resource type="Texture2D" uid="uid://557yoruptc35" path="res://assets/testures/widgets/yellow_button01.png" id="11_042l0"]
+[ext_resource type="Texture2D" uid="uid://qpgp5abh36po" path="res://assets/testures/widgets/yellow_button02.png" id="12_ve11j"]
+[ext_resource type="Texture2D" uid="uid://bllad25nq28qn" path="res://assets/testures/widgets/grey_button00.png" id="13_oj7yv"]
+[ext_resource type="AudioStream" uid="uid://ojqsx4622dsq" path="res://assets/audio/sound/click1.ogg" id="15_ho868"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m30qx"]
+font_size = 24
+outline_size = 3
+outline_color = Color(0.0313726, 0.0313726, 0.0313726, 1)
+
+[node name="MenuForm" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qmaok")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("1_gp0gm")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(480, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+metadata/_edit_group_ = true
+
+[node name="T" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_osvpx")
+
+[node name="a" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_pnyyx")
+
+[node name="p" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_7gbk5")
+
+[node name="p2" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_7gbk5")
+
+[node name="y" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_hbgtp")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+metadata/_edit_group_ = true
+
+[node name="P" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_7gbk5")
+
+[node name="l" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("6_wil7h")
+
+[node name="a2" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("3_pnyyx")
+
+[node name="n" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("7_xdao3")
+
+[node name="e" type="TextureRect" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+texture = ExtResource("8_wj3hn")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="btn_new_game" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("10_d7pqg")
+texture_pressed = ExtResource("11_042l0")
+texture_hover = ExtResource("12_ve11j")
+texture_disabled = ExtResource("13_oj7yv")
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_new_game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NewGame"
+label_settings = SubResource("LabelSettings_m30qx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_setting" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("10_d7pqg")
+texture_pressed = ExtResource("11_042l0")
+texture_hover = ExtResource("12_ve11j")
+texture_disabled = ExtResource("13_oj7yv")
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_setting"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings"
+label_settings = SubResource("LabelSettings_m30qx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_ranking" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+texture_normal = ExtResource("10_d7pqg")
+texture_pressed = ExtResource("11_042l0")
+texture_hover = ExtResource("12_ve11j")
+texture_disabled = ExtResource("13_oj7yv")
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_ranking"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Ranking"
+label_settings = SubResource("LabelSettings_m30qx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="btn_quit" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("10_d7pqg")
+texture_pressed = ExtResource("11_042l0")
+texture_hover = ExtResource("12_ve11j")
+texture_disabled = ExtResource("13_oj7yv")
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_quit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ExitGame"
+label_settings = SubResource("LabelSettings_m30qx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioClick" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("15_ho868")
+bus = &"SFX"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=8 format=3 uid="uid://cel4hkmd1gevd"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_1w2sh"]
+[ext_resource type="PackedScene" uid="uid://cy3dwntj58d2y" path="res://src/scenes/game.tscn" id="1_6kcxo"]
+[ext_resource type="PackedScene" uid="uid://djxmgba2u0bn0" path="res://src/widgets/game_form.tscn" id="3_66gj8"]
+[ext_resource type="Script" path="res://src/widgets/UILayer.gd" id="3_ufwbo"]
+[ext_resource type="PackedScene" uid="uid://bc0dgahs0sgn6" path="res://src/widgets/menu_form.tscn" id="4_n3seh"]
+[ext_resource type="AudioStream" uid="uid://b1n3v8x16io0p" path="res://assets/audio/music/Swinging Pants.ogg" id="4_xh0nh"]
+[ext_resource type="Script" path="res://src/state/game_state_machine.gd" id="5_u6q0b"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_1w2sh")
+
+[node name="game" parent="." instance=ExtResource("1_6kcxo")]
+unique_name_in_owner = true
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("3_ufwbo")
+
+[node name="GameForm" parent="UILayer" instance=ExtResource("3_66gj8")]
+unique_name_in_owner = true
+visible = false
+
+[node name="MenuForm" parent="UILayer" instance=ExtResource("4_n3seh")]
+unique_name_in_owner = true
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("4_xh0nh")
+volume_db = -10.0
+
+[node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("agent")]
+unique_name_in_owner = true
+script = ExtResource("5_u6q0b")
+agent = NodePath("..")
+
+[connection signal="game_overed" from="game" to="." method="_on_game_game_overed"]

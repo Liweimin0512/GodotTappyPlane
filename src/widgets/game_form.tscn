@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://djxmgba2u0bn0"]
+
+[ext_resource type="Script" path="res://src/widgets/GameForm.gd" id="1_rjhe1"]
+[ext_resource type="Texture2D" uid="uid://hurvio67va1p" path="res://assets/testures/widgets/numbers/number0.png" id="2_5aoio"]
+[ext_resource type="PackedScene" uid="uid://dba787dytf38p" path="res://src/widgets/w_game_over.tscn" id="3_8wifb"]
+
+[node name="GameForm" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_rjhe1")
+
+[node name="ScoreDisplay" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -55.0
+offset_top = 10.0
+offset_right = 55.0
+offset_bottom = 88.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScoreDisplay"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_5aoio")
+
+[node name="w_game_over" parent="." instance=ExtResource("3_8wifb")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = -211.0
+offset_top = -132.0
+offset_right = 211.0
+offset_bottom = 132.0
