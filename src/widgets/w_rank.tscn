@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://cyvs7g6wankb7"]
+
+[ext_resource type="Script" path="res://src/widgets/w_rank.gd" id="1_2wtvi"]
+[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/testures/widgets/UIbg.png" id="1_m2k14"]
+[ext_resource type="Texture2D" uid="uid://bs67ypxaa05ql" path="res://assets/testures/widgets/medalGold.png" id="2_q3vqj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1y1jp"]
+font_size = 22
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_d5dif"]
+font_size = 50
+outline_size = 5
+outline_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+
+[node name="w_rank" type="MarginContainer"]
+custom_minimum_size = Vector2(450, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+script = ExtResource("1_2wtvi")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = ExtResource("1_m2k14")
+expand_mode = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(0, 90)
+layout_mode = 2
+
+[node name="mc_data" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="mc_data"]
+layout_mode = 2
+
+[node name="tr_medal" type="TextureRect" parent="mc_data/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_q3vqj")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="mc_data/HBoxContainer"]
+layout_mode = 2
+
+[node name="lab_score" type="Label" parent="mc_data/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "score:9999"
+label_settings = SubResource("LabelSettings_1y1jp")
+
+[node name="lab_name" type="Label" parent="mc_data/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "name:json"
+label_settings = SubResource("LabelSettings_1y1jp")
+
+[node name="label_empty" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Empty"
+label_settings = SubResource("LabelSettings_d5dif")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://cel4hkmd1gevd"]
+
+[ext_resource type="Script" path="res://src/main.gd" id="1_s4e2e"]
+[ext_resource type="PackedScene" uid="uid://cy3dwntj58d2y" path="res://src/scenes/game.tscn" id="2_veyfj"]
+[ext_resource type="Script" path="res://src/widgets/UILayer.gd" id="3_ei6v0"]
+[ext_resource type="PackedScene" uid="uid://djxmgba2u0bn0" path="res://src/widgets/game_form.tscn" id="4_iu6dk"]
+[ext_resource type="PackedScene" uid="uid://bc0dgahs0sgn6" path="res://src/widgets/menu_form.tscn" id="5_px7js"]
+[ext_resource type="PackedScene" uid="uid://drvu7b5ejkpca" path="res://src/widgets/w_settings.tscn" id="6_fr5u2"]
+[ext_resource type="PackedScene" uid="uid://bu6f0b4yohodt" path="res://src/widgets/w_name_input_popup.tscn" id="7_ld6la"]
+[ext_resource type="AudioStream" uid="uid://b1n3v8x16io0p" path="res://assets/audio/music/Swinging Pants.ogg" id="7_t7qys"]
+[ext_resource type="Script" path="res://src/state/game_state_machine.gd" id="8_btmpt"]
+[ext_resource type="PackedScene" uid="uid://ct8k5gthan8j1" path="res://src/widgets/w_leaderboard_popup.tscn" id="8_f8sjh"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_s4e2e")
+
+[node name="game" parent="." instance=ExtResource("2_veyfj")]
+unique_name_in_owner = true
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("3_ei6v0")
+
+[node name="GameForm" parent="UILayer" instance=ExtResource("4_iu6dk")]
+unique_name_in_owner = true
+visible = false
+
+[node name="MenuForm" parent="UILayer" instance=ExtResource("5_px7js")]
+unique_name_in_owner = true
+visible = false
+
+[node name="w_settings_popup" parent="UILayer" instance=ExtResource("6_fr5u2")]
+unique_name_in_owner = true
+visible = false
+
+[node name="w_name_input_popup" parent="UILayer" instance=ExtResource("7_ld6la")]
+unique_name_in_owner = true
+visible = false
+
+[node name="w_leaderboard_popup" parent="UILayer" instance=ExtResource("8_f8sjh")]
+unique_name_in_owner = true
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("7_t7qys")
+volume_db = -10.0
+autoplay = true
+bus = &"BGM"
+
+[node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("agent")]
+unique_name_in_owner = true
+script = ExtResource("8_btmpt")
+agent = NodePath("..")

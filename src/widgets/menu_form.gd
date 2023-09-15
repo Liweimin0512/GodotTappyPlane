@@ -9,6 +9,7 @@ extends Control
 
 signal new_game_pressed
 signal settings_pressed
+signal ranking_pressed
 
 func _ready() -> void:
 	btn_new_game.pressed.connect(_on_btn_new_game_pressed)
@@ -29,6 +30,7 @@ func _on_btn_setting_pressed() -> void:
 ## 显示排行榜弹窗，弹窗中显示当前本地保存的前三名记录
 func _on_btn_ranking_pressed() -> void:
 	audio_click.play()
+	ranking_pressed.emit()
 
 ## 退出游戏
 func _on_btn_quit_pressed() -> void:

@@ -129,6 +129,7 @@ texture_normal = ExtResource("10_d7pqg")
 texture_pressed = ExtResource("11_042l0")
 texture_hover = ExtResource("12_ve11j")
 texture_disabled = ExtResource("13_oj7yv")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_new_game"]
 layout_mode = 1
@@ -149,6 +150,7 @@ texture_normal = ExtResource("10_d7pqg")
 texture_pressed = ExtResource("11_042l0")
 texture_hover = ExtResource("12_ve11j")
 texture_disabled = ExtResource("13_oj7yv")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_setting"]
 layout_mode = 1
@@ -165,11 +167,11 @@ vertical_alignment = 1
 [node name="btn_ranking" type="TextureButton" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-disabled = true
 texture_normal = ExtResource("10_d7pqg")
 texture_pressed = ExtResource("11_042l0")
 texture_hover = ExtResource("12_ve11j")
 texture_disabled = ExtResource("13_oj7yv")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_ranking"]
 layout_mode = 1
@@ -190,6 +192,7 @@ texture_normal = ExtResource("10_d7pqg")
 texture_pressed = ExtResource("11_042l0")
 texture_hover = ExtResource("12_ve11j")
 texture_disabled = ExtResource("13_oj7yv")
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="MarginContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/btn_quit"]
 layout_mode = 1

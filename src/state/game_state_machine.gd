@@ -5,7 +5,6 @@ class_name GameStateMachine
 
 ## 游戏流程状态枚举
 enum GAME_STATE_TYPE {
-	
 	INIT, 	## 初始化状态
 	READY, 	## 准备状态
 	PLAYING,## 游戏进行中状态
@@ -18,6 +17,7 @@ class InitState:
 	extends BaseState
 	func enter(_msg : Dictionary = {}) -> void:
 		print("enter init state")
+		agent.init_game()
 		transition_to(GAME_STATE_TYPE.READY)
 
 ## 这个状态显示开始菜单界面，玩家操作开始游戏跳转到playing状态

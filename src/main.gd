@@ -18,8 +18,13 @@ func _ready() -> void:
 	ui_layer.new_game_pressed.connect(_on_ui_layer_new_game_pressed)
 	ui_layer.btn_quit_pressed.connect(_on_ui_layer_btn_quit_pressed)
 	ui_layer.btn_retry_pressed.connect(_on_ui_layer_btn_retry_pressed)
+	ui_layer.w_name_input_popup_confirm_pressed.connect(_on_ui_layer_w_name_input_popup_confirm_pressed)
 	game.game_overed.connect(_on_game_game_overed)
 	game_state_machine.launch()
+
+## 初始化游戏数据
+func init_game() -> void:
+	LeaderBoard.load_leaderboard()
 
 ## 准备开始游戏，显示menu_form
 func ready_game() -> void:
@@ -43,7 +48,10 @@ func pause_game() -> void:
 
 ## 结束游戏
 func end_game() -> void:
-	ui_layer.end_game()
+	if LeaderBoard.check_leaderboard(current_score):
+		ui_layer.show_name_input_popup()
+	else:
+		ui_layer.end_game()
 
 ## 退出游戏
 func quit_game() -> void:
@@ -60,6 +68,10 @@ func _on_ui_layer_btn_quit_pressed() -> void:
 
 func _on_ui_layer_btn_retry_pressed() -> void:
 	game_state_machine.set_value('is_retry_game', true)
+
+func _on_ui_layer_w_name_input_popup_confirm_pressed(name: String) -> void:
+	if LeaderBoard.check_leaderboard(current_score):
+		LeaderBoard.update_leaderboard(name, current_score)
 
 func _on_score_timer_timeout() -> void:
 	update_score()
