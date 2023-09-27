@@ -1,77 +1,73 @@
-[gd_scene load_steps=6 format=3 uid="uid://cyvs7g6wankb7"]
+[gd_scene load_steps=5 format=3 uid="uid://dtj3u1aufd5wj"]
 
-[ext_resource type="Script" path="res://src/widgets/w_rank.gd" id="1_2wtvi"]
-[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/testures/widgets/UIbg.png" id="1_m2k14"]
-[ext_resource type="Texture2D" uid="uid://bs67ypxaa05ql" path="res://assets/testures/widgets/medalGold.png" id="2_q3vqj"]
+[ext_resource type="Texture2D" uid="uid://bs67ypxaa05ql" path="res://assets/textures/widgets/icons/medalGold.png" id="1_gy38p"]
+[ext_resource type="Script" path="res://src/widgets/w_rank.gd" id="1_kitx2"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_1y1jp"]
+[sub_resource type="LabelSettings" id="LabelSettings_g4msw"]
 font_size = 22
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_d5dif"]
-font_size = 50
+[sub_resource type="LabelSettings" id="LabelSettings_xlgug"]
+font_size = 12
 outline_size = 5
-outline_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+outline_color = Color(0, 0, 0, 1)
 
 [node name="w_rank" type="MarginContainer"]
-custom_minimum_size = Vector2(450, 0)
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_right = 30
-script = ExtResource("1_2wtvi")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-visible = false
-layout_mode = 2
-texture = ExtResource("1_m2k14")
-expand_mode = 1
+custom_minimum_size = Vector2(120, 55)
+script = ExtResource("1_kitx2")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(0, 90)
 layout_mode = 2
 
-[node name="mc_data" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="lab_empty" type="Label" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 5
+text = "EMPTY"
+label_settings = SubResource("LabelSettings_g4msw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="mc_data"]
-layout_mode = 2
-
-[node name="tr_medal" type="TextureRect" parent="mc_data/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("2_q3vqj")
-expand_mode = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="mc_data/HBoxContainer"]
-layout_mode = 2
-
-[node name="lab_score" type="Label" parent="mc_data/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "score:9999"
-label_settings = SubResource("LabelSettings_1y1jp")
-
-[node name="lab_name" type="Label" parent="mc_data/HBoxContainer/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "name:json"
-label_settings = SubResource("LabelSettings_1y1jp")
-
-[node name="label_empty" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-text = "Empty"
-label_settings = SubResource("LabelSettings_d5dif")
-horizontal_alignment = 1
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="tr_medal" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_gy38p")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="lab_name" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "name:XXX"
+label_settings = SubResource("LabelSettings_xlgug")
+vertical_alignment = 1
+
+[node name="lab_score" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "score: 999"
+label_settings = SubResource("LabelSettings_xlgug")
 vertical_alignment = 1

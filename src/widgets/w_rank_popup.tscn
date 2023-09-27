@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://drqdplnlajtue"]
+
+[ext_resource type="Script" path="res://src/widgets/w_rank_popup.gd" id="1_2xgbb"]
+[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/UIbg.png" id="1_jyncb"]
+[ext_resource type="PackedScene" uid="uid://dtj3u1aufd5wj" path="res://src/widgets/w_rank.tscn" id="2_ljqbd"]
+[ext_resource type="Texture2D" uid="uid://bs67ypxaa05ql" path="res://assets/textures/widgets/icons/medalGold.png" id="3_iym7x"]
+[ext_resource type="Texture2D" uid="uid://bjruvwxi017qv" path="res://assets/textures/widgets/icons/medalSilver.png" id="4_7wrle"]
+[ext_resource type="Texture2D" uid="uid://co6olb4lv4k6p" path="res://assets/textures/widgets/icons/medalBronze.png" id="5_hwq40"]
+[ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/yellow_button00.png" id="6_wkn11"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mqq00"]
+font_size = 12
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="w_rank_popup" type="MarginContainer"]
+custom_minimum_size = Vector2(300, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2xgbb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_jyncb")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RankContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="w_rank" parent="MarginContainer/VBoxContainer/MarginContainer/RankContainer" instance=ExtResource("2_ljqbd")]
+layout_mode = 2
+medal_texture = ExtResource("3_iym7x")
+
+[node name="w_rank2" parent="MarginContainer/VBoxContainer/MarginContainer/RankContainer" instance=ExtResource("2_ljqbd")]
+layout_mode = 2
+medal_texture = ExtResource("4_7wrle")
+
+[node name="w_rank3" parent="MarginContainer/VBoxContainer/MarginContainer/RankContainer" instance=ExtResource("2_ljqbd")]
+layout_mode = 2
+medal_texture = ExtResource("5_hwq40")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="btn_confirm" type="TextureButton" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("6_wkn11")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer3/btn_confirm"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "confirm"
+label_settings = SubResource("LabelSettings_mqq00")
+horizontal_alignment = 1
+vertical_alignment = 1

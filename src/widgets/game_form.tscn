@@ -1,40 +1,140 @@
-[gd_scene load_steps=4 format=3 uid="uid://djxmgba2u0bn0"]
+[gd_scene load_steps=8 format=3 uid="uid://bj6vqwa0jekhb"]
 
-[ext_resource type="Script" path="res://src/widgets/GameForm.gd" id="1_rjhe1"]
-[ext_resource type="Texture2D" uid="uid://hurvio67va1p" path="res://assets/testures/widgets/numbers/number0.png" id="2_5aoio"]
-[ext_resource type="PackedScene" uid="uid://dba787dytf38p" path="res://src/widgets/w_game_over.tscn" id="3_8wifb"]
+[ext_resource type="Script" path="res://src/widgets/game_form.gd" id="1_mkkql"]
+[ext_resource type="Texture2D" uid="uid://hurvio67va1p" path="res://assets/textures/widgets/numbers/number0.png" id="1_slt1x"]
+[ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/UIbg.png" id="3_qt3fj"]
+[ext_resource type="Texture2D" uid="uid://d4j0h4k5bw6va" path="res://assets/textures/widgets/textGameOver.png" id="4_6y45j"]
+[ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/yellow_button00.png" id="5_1vruv"]
+[ext_resource type="PackedScene" uid="uid://ccvgesflcfiel" path="res://src/widgets/w_name_input_popup.tscn" id="6_ot7gt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c0o5y"]
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [node name="GameForm" type="Control"]
+process_mode = 3
 layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_right = 575.0
+offset_bottom = 320.0
+script = ExtResource("1_mkkql")
+
+[node name="ScoreContainer" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_top = 8.0
+offset_right = 127.0
+offset_bottom = 86.0
+grow_horizontal = 2
+scale = Vector2(0.3, 0.3)
+
+[node name="TextureRect" type="TextureRect" parent="ScoreContainer"]
+layout_mode = 2
+texture = ExtResource("1_slt1x")
+
+[node name="w_game_over_popup" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -65.0
+offset_right = 110.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="w_game_over_popup"]
+custom_minimum_size = Vector2(220, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_qt3fj")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="w_game_over_popup"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="w_game_over_popup/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="TextureRect" type="TextureRect" parent="w_game_over_popup/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(160, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+texture = ExtResource("4_6y45j")
+expand_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="w_game_over_popup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+alignment = 1
+
+[node name="btn_quit" type="TextureButton" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
+layout_mode = 2
+size_flags_horizontal = 6
+texture_normal = ExtResource("5_1vruv")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer/btn_quit"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
-script = ExtResource("1_rjhe1")
+text = "Quit"
+label_settings = SubResource("LabelSettings_c0o5y")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ScoreDisplay" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -55.0
-offset_top = 10.0
-offset_right = 55.0
-offset_bottom = 88.0
-grow_horizontal = 2
-mouse_filter = 2
-
-[node name="TextureRect" type="TextureRect" parent="ScoreDisplay"]
+[node name="btn_retry" type="TextureButton" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
-mouse_filter = 2
-texture = ExtResource("2_5aoio")
+size_flags_horizontal = 6
+texture_normal = ExtResource("5_1vruv")
+ignore_texture_size = true
+stretch_mode = 0
 
-[node name="w_game_over" parent="." instance=ExtResource("3_8wifb")]
-unique_name_in_owner = true
+[node name="Label2" type="Label" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer/btn_retry"]
 layout_mode = 1
-offset_left = -211.0
-offset_top = -132.0
-offset_right = 211.0
-offset_bottom = 132.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+label_settings = SubResource("LabelSettings_c0o5y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="w_name_input_popup" parent="." instance=ExtResource("6_ot7gt")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = -110.0
+offset_top = -65.0
+offset_right = 110.0
+offset_bottom = 65.0
+
+[connection signal="pressed" from="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer/btn_quit" to="." method="_on_btn_quit_pressed"]
+[connection signal="pressed" from="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer/btn_retry" to="." method="_on_btn_retry_pressed"]
+[connection signal="btn_confirm_pressed" from="w_name_input_popup" to="." method="_on_w_name_input_popup_btn_confirm_pressed"]
+[connection signal="btn_quit_pressed" from="w_name_input_popup" to="." method="_on_w_name_input_popup_btn_quit_pressed"]

@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://bh48fvsvjd2ci"]
+
+[ext_resource type="Texture2D" uid="uid://bj5bl77gxeog0" path="res://assets/textures/others/background.png" id="1_2b38j"]
+[ext_resource type="Script" path="res://main.gd" id="1_1857t"]
+[ext_resource type="Script" path="res://src/ParallaxBackground.gd" id="2_m5j5f"]
+[ext_resource type="PackedScene" uid="uid://bvgch7xdw023x" path="res://src/entities/rock.tscn" id="4_cnier"]
+[ext_resource type="PackedScene" uid="uid://b6e7kd4fv3oul" path="res://src/widgets/ui_layer.tscn" id="5_ud1c5"]
+[ext_resource type="AudioStream" uid="uid://b1n3v8x16io0p" path="res://assets/audio/music/Swinging Pants.ogg" id="7_fiupf"]
+[ext_resource type="AudioStream" uid="uid://dr8voircq0gu0" path="res://assets/audio/sound/gameover2.ogg" id="8_hhb5g"]
+[ext_resource type="Script" path="res://src/game_state_machine.gd" id="9_pajfr"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_1857t")
+max_spawn_rock_time = 2.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_m5j5f")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+unique_name_in_owner = true
+motion_mirroring = Vector2(576, 0)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+unique_name_in_owner = true
+position = Vector2(288, 160)
+scale = Vector2(0.72, 0.683333)
+texture = ExtResource("1_2b38j")
+
+[node name="rock" parent="." instance=ExtResource("4_cnier")]
+position = Vector2(-56, 120)
+rotation = 3.14159
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="UILayer" parent="." instance=ExtResource("5_ud1c5")]
+unique_name_in_owner = true
+process_mode = 3
+
+[node name="audio_bgm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_fiupf")
+autoplay = true
+bus = &"BGM"
+
+[node name="audio_game_over" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_hhb5g")
+bus = &"SFX"
+
+[node name="GameStateMachine" type="Node" parent="." node_paths=PackedStringArray("agent")]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("9_pajfr")
+agent = NodePath("..")
+
+[connection signal="btn_new_game_pressed" from="UILayer" to="." method="_on_ui_layer_btn_new_game_pressed"]
+[connection signal="btn_quit_game_pressed" from="UILayer" to="." method="_on_ui_layer_btn_quit_game_pressed"]
+[connection signal="game_form_quit_game_pressed" from="UILayer" to="." method="_on_ui_layer_game_form_quit_game_pressed"]
+[connection signal="game_form_retry_game_pressed" from="UILayer" to="." method="_on_ui_layer_game_form_retry_game_pressed"]
+[connection signal="w_name_imput_popup_confirm" from="UILayer" to="." method="_on_ui_layer_w_name_imput_popup_confirm"]

@@ -1,26 +1,26 @@
 extends MarginContainer
 
-#@onready var medalGold = preload("res://assets/testures/widgets/medalGold.png")
-#@onready var medalSilver = preload("res://assets/testures/widgets/medalSilver.png")
-#@onready var medalBronze = preload("res://assets/testures/widgets/medalBronze.png")
+#var t_medalGold = preload("res://assets/textures/widgets/icons/medalGold.png")
+#var t_medalSilver = preload("res://assets/textures/widgets/icons/medalSilver.png")
+#var t_medalBronze = preload("res://assets/textures/widgets/icons/medalBronze.png")
+
 @onready var tr_medal: TextureRect = %tr_medal
-@onready var lab_score: Label = %lab_score
 @onready var lab_name: Label = %lab_name
-@onready var mc_data: MarginContainer = %mc_data
-@onready var label_empty: Label = %label_empty
+@onready var lab_score: Label = %lab_score
+@onready var lab_empty: Label = %lab_empty
+@onready var margin_container: MarginContainer = %MarginContainer
 
 @export var medal_texture : Texture = null
 
 func _ready() -> void:
 	tr_medal.texture = medal_texture
-	
 
-func update_rank(name:String, score:int) -> void:
+func update_rank(name: String, score: int) -> void:
 	if score != 0 and score != null:
-		label_empty.hide()
-		mc_data.show()
+		lab_empty.hide()
+		margin_container.show()
+		lab_name.text = "name: " + name
+		lab_score.text = "score: " + str(score)
 	else:
-		label_empty.show()
-		mc_data.hide()
-	self.lab_name.text = "name: " + name
-	self.lab_score.text = "score: " + str(score)
+		lab_empty.show()
+		margin_container.hide()

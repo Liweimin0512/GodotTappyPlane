@@ -1,58 +1,46 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfgggadid5dai"]
+[gd_scene load_steps=8 format=3 uid="uid://cnxcpnydtse7k"]
 
-[ext_resource type="Script" path="res://src/entities/plane.gd" id="1_76o5n"]
-[ext_resource type="Texture2D" uid="uid://dp54dcgrb5wv6" path="res://assets/testures/entities/planes/planeYellow1.png" id="2_307ve"]
-[ext_resource type="Texture2D" uid="uid://d0bcqgl73e1vy" path="res://assets/testures/entities/planes/planeYellow2.png" id="3_sk7vw"]
-[ext_resource type="Texture2D" uid="uid://dduq6trey1eiu" path="res://assets/testures/entities/planes/planeYellow3.png" id="4_8pegf"]
-[ext_resource type="AudioStream" uid="uid://b0fe7ukpremmf" path="res://assets/audio/sound/coin1.ogg" id="5_idalt"]
+[ext_resource type="Texture2D" uid="uid://dp54dcgrb5wv6" path="res://assets/textures/entities/planes/planeYellow1.png" id="1_3crff"]
+[ext_resource type="Script" path="res://src/entities/plane.gd" id="1_wle06"]
+[ext_resource type="Texture2D" uid="uid://d0bcqgl73e1vy" path="res://assets/textures/entities/planes/planeYellow2.png" id="2_p47as"]
+[ext_resource type="Texture2D" uid="uid://dduq6trey1eiu" path="res://assets/textures/entities/planes/planeYellow3.png" id="3_d8n2r"]
+[ext_resource type="AudioStream" uid="uid://b0fe7ukpremmf" path="res://assets/audio/sound/coin1.ogg" id="5_17trs"]
 
-[sub_resource type="SpriteFrames" id="1"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ks0mr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_307ve")
+"texture": ExtResource("1_3crff")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_sk7vw")
+"texture": ExtResource("2_p47as")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_8pegf")
+"texture": ExtResource("3_d8n2r")
 }],
 "loop": true,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="2"]
-radius = 38.1182
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_s37da"]
-radius = 30.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_nr8mi"]
+radius = 45.0111
 
 [node name="plane" type="CharacterBody2D"]
-collision_layer = 2
-script = ExtResource("1_76o5n")
+scale = Vector2(0.5, 0.5)
+collision_mask = 2
+script = ExtResource("1_wle06")
+max_tilt_angle = 90
+flap_power = 300
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("1")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ks0mr")
 autoplay = "default"
-frame_progress = 0.312529
+frame_progress = 0.409781
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("2")
-disabled = true
+shape = SubResource("CircleShape2D_nr8mi")
 
-[node name="HitArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitArea"]
-shape = SubResource("CircleShape2D_s37da")
-debug_color = Color(0.509804, 0.701961, 0.301961, 0.419608)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("5_idalt")
+[node name="audio_flap" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_17trs")
 bus = &"SFX"
-
-[connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]

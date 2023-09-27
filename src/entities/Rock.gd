@@ -1,17 +1,17 @@
-extends Node2D
+extends CharacterBody2D
 
-@export var speed = 100
-signal rock_hit
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+const SPEED = 200.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	self.position.x -= speed * delta
-	if self.position.x <= -100:
+signal rock_entered
+
+func _physics_process(delta: float) -> void:
+	self.velocity.x = SPEED * -1
+	move_and_slide()
+	if self.position.x <= -56:
 		self.queue_free()
 
-func _on_hurt_area_area_entered(area: Area2D) -> void:
-	rock_hit.emit()
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+#	print("撞击了！")
+	rock_entered.emit()
