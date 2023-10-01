@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bj5bl77gxeog0" path="res://assets/textures/others/background.png" id="1_2b38j"]
 [ext_resource type="Script" path="res://main.gd" id="1_1857t"]
 [ext_resource type="Script" path="res://src/ParallaxBackground.gd" id="2_m5j5f"]
-[ext_resource type="PackedScene" uid="uid://bvgch7xdw023x" path="res://src/entities/rock.tscn" id="4_cnier"]
+[ext_resource type="PackedScene" uid="uid://bvgch7xdw023x" path="res://src/entities/Rock.tscn" id="4_cnier"]
 [ext_resource type="PackedScene" uid="uid://b6e7kd4fv3oul" path="res://src/widgets/ui_layer.tscn" id="5_ud1c5"]
 [ext_resource type="AudioStream" uid="uid://b1n3v8x16io0p" path="res://assets/audio/music/Swinging Pants.ogg" id="7_fiupf"]
 [ext_resource type="AudioStream" uid="uid://dr8voircq0gu0" path="res://assets/audio/sound/gameover2.ogg" id="8_hhb5g"]
@@ -36,6 +36,7 @@ rotation = 3.14159
 [node name="UILayer" parent="." instance=ExtResource("5_ud1c5")]
 unique_name_in_owner = true
 process_mode = 3
+layer = 100
 
 [node name="audio_bgm" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_fiupf")

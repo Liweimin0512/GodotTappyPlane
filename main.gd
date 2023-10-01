@@ -70,6 +70,7 @@ func end_game() -> void:
 func spawn_rock() -> void:
 	var random_choice = randi_range(0, 1)
 	var rock: Node2D = s_rock.instantiate()
+	# 将rock和plane的撞击信号，绑定在对应的方法上
 	rock.rock_entered.connect(_on_rock_entered)
 	if random_choice == 0:
 		rock.position = Vector2(632, randf_range(216, 336))
@@ -81,6 +82,7 @@ func spawn_rock() -> void:
 
 ## 游戏失败
 func game_over() -> void:
+#	get_tree().quit()
 	get_tree().paused = true
 	plane.queue_free() # 销毁小飞机
 	for rock in get_tree().get_nodes_in_group("rock"):
