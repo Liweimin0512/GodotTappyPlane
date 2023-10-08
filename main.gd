@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var plane: CharacterBody2D = %plane
+@onready var plane: CharacterBody2D = null
 @onready var audio_game_over: AudioStreamPlayer = $audio_game_over
 @onready var game_state_machine: GameStateMachine = %GameStateMachine
 @onready var ui_layer: CanvasLayer = %UILayer
@@ -17,7 +17,6 @@ var score_timer : Timer = Timer.new()
 
 func _ready() -> void:
 	game_state_machine.launch()
-#	retry_game()
 
 func _process(delta: float) -> void:
 	if not plane:
@@ -34,7 +33,7 @@ func ready_game() -> void:
 
 ## 开始新游戏
 func new_game() -> void:
-	game_state_machine.set_value('is_new_game', true)
+	game_state_machine.set_variable('is_new_game', true)
 
 ## 重试游戏
 func retry_game() -> void:
@@ -61,7 +60,7 @@ func retry_game() -> void:
 
 ## 退出游戏
 func quit_game() -> void:
-	game_state_machine.set_value('is_quit_game', true)
+	game_state_machine.set_variable('is_quit_game', true)
 
 ## 退出程序
 func end_game() -> void:
@@ -122,8 +121,8 @@ func _on_ui_layer_w_name_imput_popup_confirm(player_name: String) -> void:
 
 
 func _on_ui_layer_game_form_quit_game_pressed() -> void:
-	game_state_machine.set_value('is_over_game', true)
+	game_state_machine.set_variable('is_over_game', true)
 
 
 func _on_ui_layer_game_form_retry_game_pressed() -> void:
-	game_state_machine.set_value('is_retry_game', true)
+	game_state_machine.set_variable('is_retry_game', true)
