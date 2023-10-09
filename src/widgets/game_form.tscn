@@ -56,10 +56,8 @@ grow_vertical = 2
 [node name="TextureRect" type="TextureRect" parent="w_game_over_popup"]
 custom_minimum_size = Vector2(220, 130)
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
 texture = ExtResource("3_qt3fj")
-expand_mode = 1
+expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="w_game_over_popup"]
 layout_mode = 2
@@ -76,22 +74,24 @@ size_flags_horizontal = 4
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 6
+size_flags_vertical = 3
 texture = ExtResource("4_6y45j")
-expand_mode = 1
+expand_mode = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="w_game_over_popup/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_vertical = 6
+size_flags_vertical = 3
 alignment = 1
 
 [node name="btn_quit" type="TextureButton" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
+size_flags_vertical = 4
 texture_normal = ExtResource("5_1vruv")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_group_ = true
 
 [node name="Label" type="Label" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer/btn_quit"]
 layout_mode = 1
@@ -108,10 +108,12 @@ vertical_alignment = 1
 [node name="btn_retry" type="TextureButton" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(60, 30)
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 3
+size_flags_vertical = 4
 texture_normal = ExtResource("5_1vruv")
 ignore_texture_size = true
 stretch_mode = 0
+metadata/_edit_group_ = true
 
 [node name="Label2" type="Label" parent="w_game_over_popup/MarginContainer/VBoxContainer/HBoxContainer/btn_retry"]
 layout_mode = 1
