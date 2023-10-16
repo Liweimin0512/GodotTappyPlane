@@ -17,7 +17,8 @@ config/icon="res://assets/textures/widgets/icons/medalGold.png"
 
 [autoload]
 
-RankBoard="*res://src/RankBoard.gd"
+RankBoard="*res://src/auto/RankBoard.gd"
+AudioManager="*res://src/auto/AudioManager.gd"
 
 [display]
 
