@@ -43,9 +43,8 @@ process_mode = 3
 script = ExtResource("9_pajfr")
 agent = NodePath("..")
 
-[node name="UIManager" type="Node" parent="."]
+[node name="UIManager" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+layer = 56
 script = ExtResource("7_qbe5s")
-
-[node name="UIRoot" type="CanvasLayer" parent="."]

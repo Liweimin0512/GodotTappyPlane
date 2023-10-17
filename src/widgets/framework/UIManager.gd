@@ -1,4 +1,4 @@
-extends Node
+extends CanvasLayer
 class_name UIManager
 
 """
@@ -6,7 +6,6 @@ class_name UIManager
 提供方法来打开、关闭、或切换UI窗口。
 可能还需要管理UI资源和配置，以及处理UI相关的事件和输入。
 """
-@export var ui_root : CanvasLayer
 @export var ui_path : String = "res://src/widgets/"
 
 var current_interface : UIBase:
