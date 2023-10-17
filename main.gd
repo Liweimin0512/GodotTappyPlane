@@ -3,8 +3,7 @@ extends Node2D
 @onready var plane: CharacterBody2D = null
 @onready var audio_game_over: AudioStreamPlayer = $audio_game_over
 @onready var game_state_machine: GameStateMachine = %GameStateMachine
-@onready var ui_manager : UIManager = $UImanager
-
+@onready var ui_manager : UIManager = %UImanager
 var current_ui: Control : 
 	get:
 		return ui_manager.current_interface
@@ -19,6 +18,14 @@ var current_score : int = 0
 var score_timer : Timer = Timer.new()
 
 func _ready() -> void:
+	if not ui_manager:
+		ui_manager = %UIManager
+	ui_manager.subscribe("menu_form_new_game", _on_menu_form_btn_new_game_pressed)
+	ui_manager.subscribe("menu_form_quit_game", _on_menu_form_btn_quit_game_pressed)
+	ui_manager.subscribe("popup_name_input_confirm", _on_popup_name_imput_confirm)
+	ui_manager.subscribe("popup_name_input_quit", _on_popup_name_imput_quit)
+	ui_manager.subscribe("popup_game_over_quit_game", _on_popup_game_over_quit_game_pressed)
+	ui_manager.subscribe("popup_game_over_retry_game", _on_popup_game_over_retry_game_pressed)
 	game_state_machine.launch()
 
 func _process(delta: float) -> void:
@@ -29,13 +36,14 @@ func _process(delta: float) -> void:
 
 ## 初始化操作
 func init_game() -> void:
-	init_ui_manager()
 	RankBoard.load_rank_board()
 
 func ready_game() -> void:
-	var menu_form : MenuForm = ui_manager.open_interface("menu_form")
-	menu_form.btn_new_game_pressed.connect(_on_menu_form_btn_new_game_pressed)
-	menu_form.btn_quit_pressed.connect(_on_menu_form_btn_quit_game_pressed)
+	if not ui_manager:
+		ui_manager = $UIManager
+	ui_manager.open_interface("menu_form")
+#	menu_form.btn_new_game_pressed.connect(_on_menu_form_btn_new_game_pressed)
+#	menu_form.btn_quit_pressed.connect(_on_menu_form_btn_quit_game_pressed)
 
 ## 开始新游戏
 func new_game() -> void:
@@ -59,8 +67,8 @@ func retry_game() -> void:
 	self.add_child(score_timer)
 	score_timer.start()
 #	game_form.retry_game()
-	var game_form : GameForm = ui_manager.open_interface("game_form")
-	game_form.update_score_display(current_score)
+	ui_manager.open_interface("game_form")
+	current_ui.update_score_display(current_score)
 #	game_form.retry_game()
 	%ParallaxBackground.retry_game()
 	get_tree().paused = false
@@ -96,21 +104,16 @@ func game_over() -> void:
 #	game_form.game_over()
 	if RankBoard.check_rank_board(current_score):
 		# 显示玩家输入弹窗
-		var popup_name_input : PopupNameInput = ui_manager.open_interface("popup_name_input")
-		popup_name_input.btn_quit_pressed.connect(
-			func() -> void:
-				open_popup_game_over()
-		)
-		popup_name_input.btn_confirm_pressed.connect(_on_popup_name_imput_confirm)
+		ui_manager.open_interface("popup_name_input")
 	else:
 		# 显示结束游戏弹窗
 		open_popup_game_over()
 #	print_debug("game_over")
 
 func open_popup_game_over() -> void:
-	var popup_game_over : PopupGameOver = ui_manager.open_interface("popup_game_over")
-	popup_game_over.quit_pressed.connect(_on_popup_game_over_quit_game_pressed)
-	popup_game_over.retry_pressed.connect(_on_popup_game_over_retry_game_pressed)
+	ui_manager.open_interface("popup_game_over")
+#	popup_game_over.quit_pressed.connect(_on_popup_game_over_quit_game_pressed)
+#	popup_game_over.retry_pressed.connect(_on_popup_game_over_retry_game_pressed)
 
 func _on_timer_timeout() -> void:
 	spawn_rock()
@@ -134,6 +137,11 @@ func _on_menu_form_btn_quit_game_pressed() -> void:
 func _on_popup_name_imput_confirm(player_name: String) -> void:
 	if RankBoard.check_rank_board(current_score):
 		RankBoard.update_rank_board(player_name, current_score)
+#	ui_manager.close_current_interface()
+	open_popup_game_over()
+
+func _on_popup_name_imput_quit() -> void:
+#	ui_manager.close_current_interface()
 	open_popup_game_over()
 
 func _on_popup_game_over_quit_game_pressed() -> void:
@@ -141,13 +149,3 @@ func _on_popup_game_over_quit_game_pressed() -> void:
 
 func _on_popup_game_over_retry_game_pressed() -> void:
 	game_state_machine.set_variable('is_retry_game', true)
-
-func init_ui_manager() -> void:
-	if not ui_manager:
-		ui_manager = $UIManager
-	ui_manager.register_interface("game_form", load("res://src/widgets/form/game_form.tscn"))
-	ui_manager.register_interface("menu_form", load("res://src/widgets/form/menu_form.tscn"))
-	ui_manager.register_interface("popup_game_over", load("res://src/widgets/popup/w_game_over_popup.tscn"))
-	ui_manager.register_interface("popup_name_input", load("res://src/widgets/popup/w_name_input_popup.tscn"))
-	ui_manager.register_interface("popup_rank", load("res://src/widgets/popup/w_rank_popup.tscn"))
-	ui_manager.register_interface("popup_settings", load("res://src/widgets/popup/w_settings_popup.tscn"))
