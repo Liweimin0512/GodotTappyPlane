@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dhk1x0kr7ux3a"]
+[gd_scene load_steps=15 format=3 uid="uid://dhk1x0kr7ux3a"]
 
 [ext_resource type="Script" path="res://src/widgets/menu_form.gd" id="1_bnasq"]
 [ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/others/UIbg.png" id="2_8wo4b"]
@@ -11,9 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://csf5xxgu6t0fv" path="res://assets/textures/widgets/letters/letterE.png" id="9_oinra"]
 [ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/others/yellow_button00.png" id="10_8oolx"]
 [ext_resource type="Texture2D" uid="uid://lfc2uf3ik7v" path="res://assets/textures/widgets/others/yellow_button13.png" id="11_8tvp3"]
+[ext_resource type="FontVariation" uid="uid://bsesw3pkiymkr" path="res://assets/fonts/new_font_variation.tres" id="12_bj704"]
 [ext_resource type="Texture2D" uid="uid://bllad25nq28qn" path="res://assets/textures/widgets/others/grey_button00.png" id="12_kysty"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y10gp"]
+font = ExtResource("12_bj704")
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
@@ -153,7 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "NewGame"
+text = "新游戏"
 label_settings = SubResource("LabelSettings_y10gp")
 horizontal_alignment = 1
 vertical_alignment = 1
