@@ -12,10 +12,10 @@ var ui_manager: UIManager :
 	get:
 		return get_parent()
 
+## 界面开启时调用
 func _opened(data: Dictionary = {}) -> void:
-#	print("开启了界面：", interface_name)
 	pass
 
+## 界面关闭时调用
 func _closed() -> void:
-#	print("关闭了界面：", interface_name)
 	pass
