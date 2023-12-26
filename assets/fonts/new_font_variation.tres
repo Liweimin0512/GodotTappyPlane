@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://bsesw3pkiymkr"]
+
+[ext_resource type="FontFile" uid="uid://bj4wlflwm0lq7" path="res://assets/fonts/SourceHanSansSC-Regular-2.otf" id="1_fems3"]
+
+[resource]
+base_font = ExtResource("1_fems3")
