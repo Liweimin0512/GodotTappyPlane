@@ -34,6 +34,7 @@ max_tilt_angle = 90
 flap_power = 300
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -0.785398
 sprite_frames = SubResource("SpriteFrames_ks0mr")
 autoplay = "default"
 frame_progress = 0.409781

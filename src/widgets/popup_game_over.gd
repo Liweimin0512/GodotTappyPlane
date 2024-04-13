@@ -7,8 +7,8 @@ class_name PopupGameOver
 #signal quit_pressed
 #signal retry_pressed
 
-const signal_quit: StringName = "popup_game_over_quit_game"
-const signal_retry: StringName = "popup_game_over_retry_game"
+const SIGNAL_QUIT: StringName = "popup_game_over_quit_game"
+const SIGNAL_RETRY: StringName = "popup_game_over_retry_game"
 
 func _ready() -> void:
 	btn_quit.pressed.connect(_on_btn_quit_pressed)
@@ -17,9 +17,9 @@ func _ready() -> void:
 func _on_btn_quit_pressed() -> void:
 #	ui_manager.close_current_interface()
 #	quit_pressed.emit()
-	ui_manager.emit(signal_quit, [])
+	ui_manager.emit(SIGNAL_QUIT, [])
 
 func _on_btn_retry_pressed() -> void:
 #	ui_manager.close_current_interface()
 #	retry_pressed.emit()
-	ui_manager.emit(signal_retry, [])
+	ui_manager.emit(SIGNAL_RETRY, [])

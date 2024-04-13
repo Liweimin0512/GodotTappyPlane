@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://drqdplnlajtue"]
+[gd_scene load_steps=17 format=3 uid="uid://drqdplnlajtue"]
 
 [ext_resource type="Script" path="res://src/widgets/popup_rank.gd" id="1_3gm06"]
 [ext_resource type="Texture2D" uid="uid://di0c62wqxxpxk" path="res://assets/textures/widgets/others/UIbg.png" id="2_11sh7"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://bu45n00mh538b" path="res://assets/textures/widgets/letters/letterS.png" id="10_w0ung"]
 [ext_resource type="Texture2D" uid="uid://bq8acldburxay" path="res://assets/textures/widgets/letters/letterT.png" id="11_oa5c5"]
 [ext_resource type="PackedScene" uid="uid://dtj3u1aufd5wj" path="res://src/widgets/w_rank.tscn" id="12_t8waw"]
-[ext_resource type="Texture2D" uid="uid://bs67ypxaa05ql" path="res://assets/textures/widgets/icons/medalGold.png" id="13_jlsb5"]
 [ext_resource type="Texture2D" uid="uid://bjruvwxi017qv" path="res://assets/textures/widgets/icons/medalSilver.png" id="14_ilo4c"]
 [ext_resource type="Texture2D" uid="uid://co6olb4lv4k6p" path="res://assets/textures/widgets/icons/medalBronze.png" id="15_ki7ke"]
 [ext_resource type="Texture2D" uid="uid://cf4urcy4ejis2" path="res://assets/textures/widgets/others/yellow_button00.png" id="16_ia8mg"]
@@ -155,7 +154,6 @@ layout_mode = 2
 
 [node name="w_rank" parent="MarginContainer/VBoxContainer/MarginContainer/RankContainer" instance=ExtResource("12_t8waw")]
 layout_mode = 2
-medal_texture = ExtResource("13_jlsb5")
 
 [node name="w_rank2" parent="MarginContainer/VBoxContainer/MarginContainer/RankContainer" instance=ExtResource("12_t8waw")]
 layout_mode = 2

@@ -12,6 +12,7 @@ var current_interface : UIBase:
 	get:
 		return self.get_child(-1)
 
+## 根据名称创建UI界面
 func create_interface(name: StringName) -> Control:
 	var widget_path : String = ui_path + name + ".tscn"
 	assert(ResourceLoader.exists(widget_path), "UI资源路径不识别！")
@@ -20,12 +21,14 @@ func create_interface(name: StringName) -> Control:
 		control.interface_name = name
 	return control
 
+## 根据名称获取UI界面
 func get_interface(ui_name: StringName) -> Control:
 	for interface in get_children():
 		if interface.interface_name == ui_name:
 			return interface
 	return null
 
+## 打开界面
 func open_interface(ui_name: StringName, msg: Dictionary = {}) -> UIBase:
 	if current_interface:
 		current_interface.hide()
@@ -39,6 +42,7 @@ func open_interface(ui_name: StringName, msg: Dictionary = {}) -> UIBase:
 	interface.show()
 	return interface
 
+## 关闭当前界面
 func close_current_interface() -> void:
 	var interface = current_interface
 	self.remove_child(interface)
@@ -53,14 +57,14 @@ func emit(destination : StringName, payload) -> void:
 	'''
 	if not payload is Array:
 		payload = [payload]
-	payload.insert(0, get_destination_signal(destination))
+	payload.insert(0, _get_destination_signal(destination))
 	callv("emit_signal", payload)
 
 func subscribe(destination: String, callback: Callable) -> void:
 	'''
 	订阅事件信号
 	'''
-	var dest_signal: StringName = get_destination_signal(destination)
+	var dest_signal: StringName = _get_destination_signal(destination)
 	if not is_connected(dest_signal, callback):
 		# warning-ignore: return_value_discarded
 		connect(dest_signal, callback)
@@ -69,12 +73,12 @@ func unsubscribe(destination: String, callback: Callable) -> void:
 	'''
 	取消订阅事件信号
 	'''
-	var dest_signal: StringName = get_destination_signal(destination)
-	if not is_connected(dest_signal, callback):
+	var dest_signal: StringName = _get_destination_signal(destination)
+	if is_connected(dest_signal, callback):
 		# warning-ignore: return_value_discarded
 		disconnect(dest_signal, callback)
 
-func get_destination_signal(destination: String) -> StringName:
+func _get_destination_signal(destination: String) -> StringName:
 	'''
 	获取目标信号名称
 	'''

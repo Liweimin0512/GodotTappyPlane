@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	velocity.y += gravity * delta
 	# 设置当前的倾斜角度
-	var tilt_angle = clamp((velocity.y / gravity) * max_tilt_angle, min_tilt_angle, max_tilt_angle)
+	var tilt_angle = clamp((velocity.y / gravity) * max_tilt_angle, -360, max_tilt_angle)
 	self.rotation_degrees = tilt_angle
 	# 位移
 	move_and_slide()
