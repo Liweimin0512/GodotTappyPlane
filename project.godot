@@ -12,8 +12,8 @@ config_version=5
 
 config/name="GodotTappyPlane"
 run/main_scene="res://main.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://assets/textures/widgets/icons/medalGold.png"
+config/features=PackedStringArray("4.2", "Forward Plus")
+config/icon="res://icon.png"
 
 [autoload]
 
